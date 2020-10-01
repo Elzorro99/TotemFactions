@@ -1,0 +1,10 @@
+name: TotemFactions
+version: 1.12.4
+author: Elzorro99, jeffcheasey88
+main: net.elzorro99.totemfactions.Main
+load: POSTWORLD
+softdepend : [Factions, MassiveCore, LegacyFactions, FeatherBoard, PlaceholderAPI, MVdWPlaceholderAPI]
+website: https://goo.gl/6QSXZ2
+commands:
+  totem:
+   description: Commande principale du plugin.

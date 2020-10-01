@@ -1,0 +1,103 @@
+# Plugin TotemFactions
+# By Elzorro99
+# Version: v1.12.4
+# Plugin compatible avec les versions (1.7, 1.8, 1.9, 1.10, 1.11, 1.12, 1.13, 1.14, 1.15) de spigot.
+
+# Dans ce fichier vous pouvez modifier les configurations du plugin.
+TotemConfigs:
+    
+    # Les permissions.
+    permissions:
+        totemDefault: "" # Désactivé de base. Ajouter une permission pour activer.
+        totemSetSpawn: "cmd.totem.setspawn"
+        totemSpawn: "cmd.totem.spawn"
+        totemStop: "cmd.totem.stop"
+        totemReset: "cmd.totem.reset"
+        totemReload: "cmd.totem.reload"
+        totemUpdate: "cmd.totem.update"
+        totemPoints: "cmd.totem.points"
+        totemAll: "cmd.totem.all"
+        
+    # Configurations des options.
+    settings:
+        # Activer ou désactiver les récompences de victoirs, customiser les commands.
+        rewards:
+            # Récompence pour joueur.
+            # Vous pouvez utiliser les variables <player> et <factionName>.
+            player:
+                # Récompence pour le joueur qui détruit le dernier bloc du totem.
+                breakLastBlock:
+                    enable: true
+                    commands:
+                        - "give <player> minecraft:quartz_block 1"
+                        
+                # Récompence pour le joueur qui détruit le plus de bloc du totem.
+                breakMostBlock:
+                    enable: true
+                    commands:
+                        - "give <player> minecraft:grass 1"
+                        
+            # Récompence pour tous les joueurs connecté de la faction.
+            # Attention sa give aussi au joueur qui a détruit le dernier bloc.
+            faction:
+                enable: true
+                commands:
+                    - "give <player> minecraft:stone 1"
+                    - "give <player> minecraft:dirt 1"
+        
+        # Activer ou désactiver les prefix dans les messages et titles.
+        prefix:
+            enable: true
+            prefix: "&f[&6Totem&f]"
+        
+        # Activer ou désactiver la pub du plugin.
+        pubPlugin:
+            enable: true
+        
+        # Son pendant le compte à rebours.
+        # Disponible: < 1.9
+        sounds:
+            enable: true
+        
+        # Activer ou désactiver les scorboards. (Scoreboards du plugin FeatherBoards ou TotemFactions)
+        scoreboard:
+            # Paramètres du scoreboards du plugin (FeatherBoards).
+            featherBoards:
+                enable: false
+                name: "totem"
+                
+            # Paramètres du scoreboards du plugin (TotemFactions).
+            totemFactions:
+                enable: true
+            
+        # Activer ou désactiver les feux d'artifices.
+        fireworks:
+            enable: true
+            
+        # Activer ou désactiver les particules.
+        # Disponible: > 7 et < 1.13
+        particles:
+            enable: true
+            
+        # Activer ou désactiver les titles.
+        # Disponible: > 1.7
+        titles:
+            enable: true
+            
+        # Item avec le quel vous dever détruire le totem. (Material name ou ID)
+        # "*" pour utiliser n'importe quel item.
+        itemBreakTotem:
+            - "DIAMOND_SWORD"
+            - "283" # ID du Material : GOLD_SWORD
+        
+        # Type de bloc utiliser quand le totem spawn. (Material name ou ID)
+        typeTotemBlock: "QUARTZ_BLOCK"
+            
+        # Respawn automatique, jours - heures - minutes.
+        # Pour configurer les délais il faut aller dans le fichier location.
+        # Pour les délais le plugin utilise des CRON.
+        # Pour plus d'info c'est ici: https://www.sauronsoftware.it/projects/cron4j/manual.php#p02
+        autoRespawn:
+            enable: true
+            # Mode de respawn du totem "create" ou "now".
+            modRespawn: "create"

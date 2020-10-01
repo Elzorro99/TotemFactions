@@ -1,0 +1,275 @@
+# Plugin TotemFactions
+# By Elzorro99
+# Version: v1.12.4
+# Attention merci de ne pas modifier les arguments entre <args>!
+# Attention si les accents sont mal afficher dans le jeux, convertisser le fichier en UTF-8 > ANSI ou ANSI < UTF-8. (Via Notepad++)
+
+# Dans ce fichier vous pouvez momdifier tous les messages du plugin.
+TotemMessages:
+
+    # Nom des totems.
+    totemName:
+        totem1:
+            name: "Nord"
+        totem2:
+            name: "Sud"
+        totem3:
+            name: "Ouest"
+        totem4:
+            name: "Est"
+
+    # Messages destiné au staff.
+    staff:
+        setSpawn:
+            - "&aLe point de spawn du totem <name> à bien été définie."
+            - "&6Information&f: (&bNom&f: &7<name>&f) = (&bNuméro&f: &7<numero>&f)"
+            - "&6Coordonnée&f: (&bX&f:&7<x>&f, &bY&f:&7<y>&f, &bZ&f:&7<z>&f, &bMonde&f:&7<world>&f)"
+            
+        setSpawnId:
+            - "&cMerci de donner le numéro du totem."
+            - "&cCommande: (/totem setspawn 1-4)"
+            
+        setSpawnInt:
+            - "&cLe numéro du totem doit étre inclu entre 1 et 4."
+            - "&cCommande: (/totem setspawn 1-4)"
+            
+        spawnTotemId:
+            - "&cMerci de donner le numéro du totem."
+            - "&cCommande: (/totem <type> 1-4)"
+            
+        spawnTotemInt:
+            - "&cLe numéro du totem doit étre inclu entre 1 et 4."
+            - "&cCommande: (/totem <type> 1-4)"
+            
+        locationError:
+            - "&cLe point de spawn du totem <totemName> n'est pas valide."
+            - "&cCommande: (/totem setspawn <id>)"
+            
+        totemAutoStop:
+            - "&cLe totem vien d'étre stopper automatiquement&f!"
+            - "&cLa durée maximale de l'événement est de 1h30minutes&f."
+            
+        totemInCreation:
+            - "&aLe totem <totemName> est en cour de création."
+            
+        totemAlreadyLaunched:
+            - "&cErreur un totem a déja été lancée."
+            
+        cantTotemStop:
+            - "&cActuellement il y à aucun totem en cour."
+            
+        consoleNotAllowed:
+            - "Il faut etre joueur pour faire cela!"
+            
+        stopTotemComplete:
+            - "&aVous avez bien stopper le totem <totemName>."
+            
+        resetComplete:
+            - "&aLe fichier (stats.yml) à bien été reset."
+            - "&aUne sauvegarde a été crée sous ne nom de (xx-xx-xxxx xx-xx-xx.yml)."
+            
+        reloadComplete:
+            - "&aLe plugin TotemFactions a été reload avec succès!"
+            - "&aTemp de reload: (<timerMs>ms)"
+            
+        pointsAddRemoveComplete:
+            - "&aLes points de la faction <factionName> on été mis à jour."
+            - "&aType: <type> - Points: <points>"
+        
+        pointsClearComplete:
+            - "&aLes points de la faction <factionName> on bien été clear."
+            
+        pointsError:
+            - "&cLa commande n'est pas complète ou valide."
+            - "&c/totem points <add/remove> <faction> <win/block> <point>"
+            - "&c/totem points <clear> <faction>"
+            
+        updatePluginMsg: "&6Hey, votre plugin &bTotemFactions &6n'est &cplus à jour&f!"
+        updatePluginUrl: "&7Cliquer ici pour télécharger la &anouvelle version&f!"
+            
+        reloadError:
+            - "&cErreur: Echec du reload du plugin TotemFactions :("
+            - "&cErreur: Vous pouvez essayer de le redémarrer."
+            
+        loadError:
+            - "&cErreur: Le plugin ne fonctionne pas correctement."
+            - "&cErreur: Consulter la console afin d'en savoir plus."
+            - "&cErreur: Support Discord: https://discord.gg/nZP7wZX."
+            
+    # Messages public.
+    public:
+        commands:
+            - "&b---"
+            - "&6Commandes du totem :"
+            - "&b/totem setspawn &f- &7Définit le spawn des totems."
+            - "&b/totem create &f- &7Création du totem. (5minutes countdown)"
+            - "&b/totem now &f- &7Création du totem. (10secondes countdown)"
+            - "&b/totem stop &f- &7Stop le totem."
+            - "&b/totem top &f- &7Classement des factions."
+            - "&b/totem stats &f- &7Statistiques de votre faction."
+            - "&b/totem info &f- &7Informations générale."
+            - "&b/totem timer &f- &7Temps restant avant l'apparition du totem."
+            - "&b/totem points &f- &7Modifie les points d'une faction."
+            - "&b/totem reset &f- &7Reset le fichier. (stats.yml)"
+            - "&b/totem reload &f- &7Reload le plugin."
+            - "&b---"
+            
+        commandNotExist:
+            - "&cLa commande (/totem '<command>') n'existe pas."
+            - "&cPour voir les commandes disponible utilisez (/totem)."
+            
+        stats:
+            - "&b---"
+            - "&7Informations sur votre faction."
+            - "&6Votre faction&f: &f(&b<factionName>&f)"
+            - "&6Victoire(s) de votre faction&f: &f(&b<wins>&f)"
+            - "&6Bloc(s) total détruit&f: &f(&b<blocks>&f)"
+            - "&b---"
+        
+        # Dans le /totem info, vous pouvez écrire ce que vous voulez.
+        info:
+            - "&b---"
+            - "&6Totem &b<totemName1>&f: &f(&b<x1>&f, &b<y1>&f, &b<z1>&f, &b<world1>&f)"
+            - "&6Totem &b<totemName2>&f: &f(&b<x2>&f, &b<y2>&f, &b<z2>&f, &b<world2>&f)"
+            - "&6Totem &b<totemName3>&f: &f(&b<x3>&f, &b<y3>&f, &b<z3>&f, &b<world3>&f)"
+            - "&6Totem &b<totemName4>&f: &f(&b<x4>&f, &b<y4>&f, &b<z4>&f, &b<world4>&f)"
+            - "&6Version du plugin&f: &f(&b<versionPlugin>&f)"
+            - "&6Version du serveur&f: &f(&b<versionServer>&f)"
+            - "&b---"
+            
+        timerCron:
+            - "&b---"
+            - "&cTemps avant le prochain Totem&f."
+            - "&6Prochain totem dans&f: (<date-countdown>)"
+            - "&6Date§f: (<date-schedule>)"
+            - "&b---"
+            
+        timerCountdown:
+            - "&b---"
+            - "&cTemps avant l'apparition du Totem&f."
+            - "&6Apparition du totem dans&f: (&b<minutes>m&f:&b<seconds>s&f)"
+            - "&b---"
+            
+        timerDelay:
+            - "&b---"
+            - "&cDurée de l'événement&f. (1h30mins Max)"
+            - "&6Durée de l'événement&f: (&b<minutes>m&f:&b<seconds>s&f)"
+            - "&b---"
+            
+        winMessages:
+            - "&b---"
+            - "&b<player> &6détruit le dernier bloc du totem &b<totemName>&6!"
+            - "&6Victoire pour la faction &b<faction>&6!"
+            - "&6Ils remportent le totem pour la &b<wins> &6foi(s)!"
+            - "&6Avec &b<blocksAll> &6blocs détruit au total. &b<blocksEvent> &6durant l'event."
+            - "&b---"
+            
+        stop:
+            - "&cLe totem <totemName> vien d'étre stopper par un membre du staff!"
+            
+        noRankFactions:
+            - "&cAucune faction n'a gagner le totem pour le moment."
+            
+        rankFactionsStyle:
+            - "&b--- &6Pages <page>/<totalPage> &b---"
+            
+        rankFactionsList:
+            - "&6#&7<num> &f- &b<faction> &f(&6Wins&f: &b<win> &f- &6Blocs Détruits&f: &b<blocks>&f)"
+            
+        dontHaveFaction:
+            - "&cVous devez avoir une faction pour détruitre le totem!"
+            
+        notPermission:
+            - "&cVous n'avez pas la permission pour exécuter cette commande."
+            
+        autoRespawn:
+            - "&6Le prochain totem &f(&b<randomTotem>&f) &6spawn dans &b<timer>minute(s)&6!"
+            
+        timerMinutes:
+            - "&6Apparition du totem &b<totemName> &6dans &b<timer>minute(s)&6!"
+            
+        timerSecondes:
+            - "&6Apparition du totem &b<totemName> &6dans &b<timer>second(s)&6!"
+            
+        timerEnd:
+            - "&6Le totem &b<totemName> &6vien d'apparaitre. &6Bonne chance à tous!"
+            - "&6Coordonnées du totem &b<totemName>&f: (&b<x>&f, &b<y>&f, &b<z>&f)"
+            
+        breakFirstBlock:
+            - "&b<player> &6de la faction &b<faction> &6débute la destruction du totem! &f(Plus que <block>/5)"
+            
+        breakOtherBlock:
+            - "&b<player> &6détruit un bloc du totem! &f(Plus que <block>/5)"
+            
+        breakCounterFaction:
+            - "&b<player> &6bloque la faction &c<factionBlock>&6! &6Totem remis à zéro."
+            
+        breakTotemBadItem:
+            - "&cVous devez avoir une <item> pour détruire le totem!"
+      
+    # Scoreboard messages.
+    scoreboard:
+        # Nom du scoreboard.
+        scoreboardName: "&6&lTotem &f&l(&b&l<totemName>&f&l)"
+        
+        # Faction afficher dans le scoreboard quand le totem n'appartien à personne.
+        defaultFaction: "Aucune"
+    
+        # Lignes dans le scorboard lors du compte à rebour.
+        # Attention max 15 lignes, toutes les lignes doivent étre unique.
+        scoreboardLinePreEvent:
+            - "&7&m--------------------"
+            - "&6&lLocation&f:"
+            - "&6» &7X&f: &b<x>"
+            - "&6» &7Y&f: &b<y>"
+            - "&6» &7Z&f: &b<z>"
+            - "&6» &7Monde&f: &b<world>"
+            - "&a"
+            - "&6&lTemps&f:"
+            - "&6» &b<minutes>m&f:&b<seconds>s"
+            - "&7&m--------------------&a"
+    
+        # Lignes dans le scorboard quand le totem est lancée.
+        # Attention max 15 lignes, toutes les lignes doivent étre unique.
+        scoreboardLineInEvent:
+            - "&7&m--------------------"
+            - "&6&lLocation&f:"
+            - "&6» &7X&f: &b<x>"
+            - "&6» &7Y&f: &b<y>"
+            - "&6» &7Z&f: &b<z>"
+            - "&6» &7Monde&f: &b<world>"
+            - "&a"
+            - "&6&lFaction&f:"
+            - "&6» &b<faction>"
+            - "&b"
+            - "&6&lBloc(s)&f:"
+            - "&6» &b<block>&f/&b5"
+            - "&7&m--------------------&a"
+            
+        # Lignes dans le scorboard quand l'événement est terminer.
+        # Attention max 15 lignes, toutes les lignes doivent étre unique.
+        scoreboardLinePostEvent:
+            - "&7&m--------------------"
+            - "&6Victoire pour:"
+            - "&6» &b<faction>"
+            - "&a"
+            - "&6Win(s) total&f:"
+            - "&6» &b<wins>"
+            - "&b"
+            - "&6Bloc(s) détruit&f:"
+            - "&6» &7Event&f: &b<blockEvent>"
+            - "&6» &7Total&f: &b<blockAll>"
+            - "&7&m--------------------&a"
+            
+    # Titles messages.
+    title:
+        timerMinutes: "&6Apparition du totem&r: &b<timer>minute(s)&r!"
+        
+        timerSecondes: "&6Apparition du totem&r: &b<timer>second(s)&r!"
+        
+        timerEnd: "&6Le totem &b<totemName> &6vien d'apparaitre!"
+        
+        winFaction: "&6Victoire pour la &b<faction>&6!"
+        
+        totemStop: "&cTotem <totemName> stopper!"
+        
